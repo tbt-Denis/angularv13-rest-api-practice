@@ -1,0 +1,35 @@
+<form class="forma" [formGroup]="profileForm" (ngSubmit)="onSubmit(profileForm)">
+    <label for="title">First Name: </label>
+    <input id="title" type="text" formControlName="title" placeholder="title..."
+    required minlength="1" >
+    <div>
+        <label for="body" >Last Name: </label>
+        <input id="body" type="text" formControlName="body" placeholder="body..."
+        required minlength="1" 
+        >
+    </div>
+    <p>Complete the form to enable button.</p>
+    <button type="submit" [disabled]="!profileForm.valid"> POST </button>
+    <button (click)="getData()"> GET DATA </button>
+    <button (click)="putData()"> PUT DATA </button>
+  </form>
+
+
+  <ol *ngFor="let data of posts.arrayService; let i = index">
+      <div class="table">
+        <span>
+            <div class="information">
+                <strong> {{ i + 1 }} </strong>
+                <p>
+                    Data title: {{ data.title }}
+                </p>
+                <p>
+                    Data body: {{ data.body }} 
+                </p> 
+            </div>
+            <div class="buttons">
+                <button (click)="deleteData()"> Remove </button>
+            </div>
+        </span> 
+      </div> 
+  </ol>
